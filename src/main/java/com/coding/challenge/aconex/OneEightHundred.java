@@ -1,5 +1,6 @@
 package com.coding.challenge.aconex;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Scanner;
@@ -48,7 +49,8 @@ public class OneEightHundred {
 			if(dictionaryFilePath!=null && !dictionaryFilePath.isEmpty()){
 				dictionaryWords = dictionaryReader.readFile(dictionaryFilePath);
 			}else{
-				dictionaryWords = dictionaryReader.readFile(getClass().getClassLoader().getResource("Dictionary.txt").getPath().toString());
+				File file = new File(this.getClass().getClassLoader().getResource("Dictionary.txt").getFile());
+				dictionaryWords = dictionaryReader.readFile(file.getAbsolutePath());
 			}
 			Dictionary dictionary = new DictionaryImpl(new ArrayList<String>(dictionaryWords));
 			if(inputFilePath !=null && !inputFilePath.isEmpty()){

@@ -3,6 +3,7 @@ package com.coding.challenge.aconex.service.impl;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -25,8 +26,9 @@ public class DictionaryImplTest {
 	
 	@Before
 	public void before() throws AconexException{
+		File file = new File(this.getClass().getClassLoader().getResource("Dictionary.txt").getFile());
 		this.dictionaryReader =  new DictionaryReaderImpl();
-		this.dictionaryWords = dictionaryReader.readFile(getClass().getClassLoader().getResource("Dictionary.txt").getPath().toString());
+		this.dictionaryWords = dictionaryReader.readFile(file.getAbsolutePath());
 		this.dictionary= new DictionaryImpl(new ArrayList<String>(dictionaryWords));
 	}
 
@@ -37,9 +39,8 @@ public class DictionaryImplTest {
 	
 	@Test
 	public void should_return_result_set(){
+		
 		List<String> list = new ArrayList<String>(Arrays.asList("2255.63"));
-		
-		
 		for(String number:list){
 			Set<String> result = dictionary.getWords(number);
 			assertTrue(result.size()>0);

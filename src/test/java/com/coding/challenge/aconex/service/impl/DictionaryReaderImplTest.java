@@ -3,6 +3,7 @@ package com.coding.challenge.aconex.service.impl;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import java.io.File;
 import java.util.Set;
 
 import org.junit.After;
@@ -29,10 +30,9 @@ public class DictionaryReaderImplTest {
 	
 	@Test
 	public void should_read_file() throws AconexException{
-		
-			String filePath=getClass().getClassLoader().getResource("Dictionary.txt").getPath().toString();
-			Set<String> dictionaryWord = dictionaryReader.readFile(filePath);
-			assertTrue(dictionaryWord.size()>0);
+		File file = new File(this.getClass().getClassLoader().getResource("Dictionary.txt").getFile());
+		Set<String> dictionaryWord = dictionaryReader.readFile(file.getAbsolutePath());
+		assertTrue(dictionaryWord.size()>0);
 	}
 	
 	@Test(expected=AconexException.class)

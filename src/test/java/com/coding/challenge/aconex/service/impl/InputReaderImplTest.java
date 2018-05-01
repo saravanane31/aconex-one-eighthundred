@@ -3,6 +3,7 @@ package com.coding.challenge.aconex.service.impl;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import java.io.File;
 import java.util.Set;
 
 import org.junit.After;
@@ -29,8 +30,8 @@ public class InputReaderImplTest {
 	
 	@Test
 	public void should_read_file() throws AconexException{
-		String filePath=getClass().getClassLoader().getResource("Input.txt").getPath().substring(1);
-		Set<String> inputs = inputReader.readFile(filePath);
+		File file = new File(this.getClass().getClassLoader().getResource("Input.txt").getFile());
+		Set<String> inputs = inputReader.readFile(file.getAbsolutePath());
 		assertTrue(inputs.size()>0);
 	}
 	
