@@ -1,6 +1,5 @@
 package com.coding.challenge.aconex.service.impl;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -10,7 +9,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -28,7 +26,7 @@ public class DictionaryImplTest {
 	@Before
 	public void before() throws AconexException{
 		this.dictionaryReader =  new DictionaryReaderImpl();
-		this.dictionaryWords = dictionaryReader.readFile(getClass().getClassLoader().getResource("Dictionary.txt").getPath().substring(1));
+		this.dictionaryWords = dictionaryReader.readFile(getClass().getClassLoader().getResource("Dictionary.txt").getPath().toString());
 		this.dictionary= new DictionaryImpl(new ArrayList<String>(dictionaryWords));
 	}
 

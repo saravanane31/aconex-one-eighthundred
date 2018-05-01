@@ -30,7 +30,7 @@ public class DictionaryReaderImplTest {
 	@Test
 	public void should_read_file() throws AconexException{
 		
-			String filePath=getClass().getClassLoader().getResource("Dictionary.txt").getPath().substring(1);
+			String filePath=getClass().getClassLoader().getResource("Dictionary.txt").getPath().toString();
 			Set<String> dictionaryWord = dictionaryReader.readFile(filePath);
 			assertTrue(dictionaryWord.size()>0);
 	}

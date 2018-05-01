@@ -25,13 +25,16 @@ public class InputReaderImpl implements InputReader {
 	 */
 	@Override
 	public Set<String> readFile(String filePath) throws AconexException {
-		try {
-			Set<String> wordList=Files.lines(Paths.get(filePath)).collect(Collectors.toSet());
-			return wordList;
-		} catch (IOException e) {
-			System.out.println("Unable to read input File ::"+e.getMessage());
-			throw new AconexException("No file found at specified location");
+		if(!filePath.isEmpty()){
+			try {
+				Set<String> wordList=Files.lines(Paths.get(filePath)).collect(Collectors.toSet());
+				return wordList;
+			} catch (IOException e) {
+				System.out.println("Unable to read input File ::"+e.getMessage());
+				throw new AconexException("No file found at specified location");
+			}
+		}else{
+			throw new AconexException("File path cannot be empty");
 		}
-		
 	}
 }

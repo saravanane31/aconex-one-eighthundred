@@ -48,7 +48,7 @@ public class OneEightHundred {
 			if(dictionaryFilePath!=null && !dictionaryFilePath.isEmpty()){
 				dictionaryWords = dictionaryReader.readFile(dictionaryFilePath);
 			}else{
-				dictionaryWords = dictionaryReader.readFile(getClass().getClassLoader().getResource("Dictionary.txt").getPath().substring(1));
+				dictionaryWords = dictionaryReader.readFile(getClass().getClassLoader().getResource("Dictionary.txt").getPath().toString());
 			}
 			Dictionary dictionary = new DictionaryImpl(new ArrayList<String>(dictionaryWords));
 			if(inputFilePath !=null && !inputFilePath.isEmpty()){
